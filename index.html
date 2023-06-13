@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <section class="calc">
+    <main>
+      <form action="">
+        <ul class="form">
+          <li>
+            <label for="day">Day</label>
+            <input type="number" name="day" id="day" placeholder="DD" min="1" max="31">
+          </li>
+          <li>
+            <label for="month">Month</label>
+            <input type="number" name="month" id="month" placeholder="MM" min="1" max="12">
+          </li>
+          <li>
+            <label for="year">Year</label>
+            <input type="number" name="year" id="year" placeholder="YYYY" min="1900" max="2030">
+          </li>
+        </ul>
+      </form>
+      <hr>
+      <ul class="calc">
+        <li><span class="calc" id="calc-years">--</span> years</li>
+        <li><span class="calc" id="calc-months">--</span> months</li>
+        <li><span class="calc" id="calc-days">--</span> days</li>
+      </ul>
+    </main>
+    <footer>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="#">pow4h</a>.
+      </div>
+    </footer>
+  </section>
+</body>
+</html>
