@@ -1,12 +1,109 @@
-* {
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  background-color: hsl(0, 0%, 86%);
   font-family: "Poppins", sans-serif;
 }
 
-body {
-  background-color: hsl(0, 0%, 86%);
+.submit-cont {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+}
+.submit-cont hr {
+  width: 100%;
+  height: 1px;
+}
+.submit-cont button {
+  border-radius: 50%;
+  background-color: hsl(259, 100%, 65%);
+  border: none;
+  padding: 1rem;
+  width: 4rem;
+  aspect-ratio: 1/1;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: calc(50% - 2rem);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 section.calc {
@@ -19,26 +116,68 @@ section.calc main {
   background-color: hsl(0, 0%, 100%);
   width: -moz-fit-content;
   width: fit-content;
-  max-width: 90vw;
-  padding: 3rem 1rem;
+  max-width: 95vw;
+  padding: 3rem clamp(1.5rem, 0.5rem + 5vw, 3rem);
   border-radius: 1.5rem;
-  border-bottom-right-radius: 5rem;
+  border-bottom-right-radius: clamp(5rem, -0.6rem + 28vw, 14rem);
 }
 section.calc input {
-  font-size: 2rem;
+  font-size: clamp(1rem, 0.5rem + 3.75vw, 2rem);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  -webkit-border-radius: 0.75rem;
+  -moz-border-radius: 0.75rem;
+  -ms-border-radius: 0.75rem;
+  -o-border-radius: 0.75rem;
+  border: 1px solid hsl(0, 0%, 86%);
+  -webkit-margin-before: 0.5rem;
+          margin-block-start: 0.5rem;
+}
+section.calc form label {
+  text-transform: uppercase;
+  color: hsl(0, 1%, 44%);
+  letter-spacing: 3px;
+  font-size: 0.75rem;
 }
 section.calc form ul {
-  list-style: none;
   display: flex;
+  padding: 0;
+  max-width: 100%;
+  gap: 1rem;
 }
 section.calc form ul li {
   display: flex;
   flex-direction: column;
+  max-width: 30%;
 }
 section.calc ul.calc {
-  font-size: 4rem;
-  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(3rem, 1.5rem + 7.5vw, 6rem);
+  line-height: 1.25em;
 }
 section.calc ul.calc span.calc {
   color: hsl(259, 100%, 65%);
+}
+
+@media screen and (min-width: 680px) {
+  section.calc main {
+    width: 80vw;
+    max-width: 52rem;
+  }
+  section.calc form ul {
+    gap: 2rem;
+  }
+  .submit-cont {
+    padding: 1rem 0;
+  }
+  .submit-cont button {
+    position: static;
+    width: 6rem;
+  }
+  .submit-cont button img {
+    display: inline;
+  }
 }/*# sourceMappingURL=style.css.map */
