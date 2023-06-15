@@ -161,10 +161,7 @@ function Calculate() {
     const calcYearsElement = document.getElementById("calc-years");
     const calcMonthsElement = document.getElementById("calc-months");
     const calcDaysElement = document.getElementById("calc-days");
-  
-    calcYearsElement.classList.add("animated-number");
-    calcMonthsElement.classList.add("animated-number");
-    calcDaysElement.classList.add("animated-number");
+
   
     if (currentYears < calcYears) {
       currentYears++;
