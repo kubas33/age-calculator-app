@@ -19,22 +19,40 @@ function inputUpdate() {
 
 function mustBeValidInput(input, type) {
     let error = input.parentNode.querySelector(".error");
-    input.validity.valid = false;
+    let label = input.parentNode.querySelector("label");
     input.setAttribute("invalid", "true");
+    input.classList.add("invalid");
+    label.classList.add("invalid");
     return error.textContent = `Must be a valid ${type}`;
 }
 
 function mustBeInPast(input) {
     let error = input.parentNode.querySelector(".error");
-    input.validity.valid = false;
+    let label = input.parentNode.querySelector("label");
     input.setAttribute("invalid", "true");
+    input.classList.add("invalid");
+    label.classList.add("invalid");
     return error.textContent = "Must be in the past";
+}
+
+function inputRequired(input) {
+  console.log(input.value);
+  let error = input.parentNode.querySelector(".error");
+  let label = input.parentNode.querySelector("label");
+  if (input.value === ""){
+    input.setAttribute("invalid", "true");
+    input.classList.add("invalid");
+    label.classList.add("invalid");
+    error.textContent = "This field is required";
+  }
 }
 
 function clearError(input) {
     let error = input.parentNode.querySelector(".error");
-    input.validity.valid = true;
-    input.setAttribute("invalid", "false"); 
+    let label = input.parentNode.querySelector("label");
+    input.setAttribute("invalid", "false");
+    input.classList.remove("invalid");
+    label.classList.remove("invalid");
     error.textContent = "";
 }
 
@@ -51,7 +69,8 @@ function clearCalculation() {
 
 function inputValidate() {
     inputUpdate();
-    const inputs = [dayValue, monthValue, yearValue];
+    const inputsValues = [dayValue, monthValue, yearValue];
+    const inputs = [inpDay, inpMonth, inpYear];
     if ((monthValue + 1) % 2 !== 0) {
         if (dayValue > 31) {
             //inpDay.validity.valid = false;
@@ -65,11 +84,11 @@ function inputValidate() {
             if (!isLeapYear(yearValue)){
                 if (dayValue > 28){
                     mustBeValidInput(inpDay, "day");
-                } 
+                }
                 else {
                     clearError(inpDay);
                 }
-            } 
+            }
             else if (dayValue > 29){
                 mustBeValidInput(inpDay, "day");
             } else {
@@ -110,7 +129,7 @@ function inputValidate() {
         clearError(inpYear);
     }
 
-    inputs.forEach(e => {
+    inputsValues.forEach(e => {
         if (e < 1) {
             console.log(monthValue);
             switch(e) {
@@ -127,12 +146,12 @@ function inputValidate() {
             }
         }
     });
+    inputs.forEach(e => inputRequired(e));
 }
 
 
 function Calculate() {
 
-  
 
   let calcYears = today.getFullYear() - date.getFullYear();
   let calcMonths = today.getMonth() - date.getMonth();
@@ -162,7 +181,6 @@ function Calculate() {
     const calcMonthsElement = document.getElementById("calc-months");
     const calcDaysElement = document.getElementById("calc-days");
 
-  
     if (currentYears < calcYears) {
       currentYears++;
       calcYearsElement.textContent = currentYears;
@@ -183,26 +201,26 @@ function Calculate() {
   console.log(
     calcYears + " lat " + calcMonths + " miesięcy " + calcDays + " dni"
   );
-/*   document.getElementById("calc-years").textContent = "0";
-  setTimeout(() => {
-    document.getElementById("calc-years").textContent = calcYears;
-  }, 500);
-  document.getElementById("calc-months").textContent = calcMonths;
-  document.getElementById("calc-days").textContent = calcDays; */
 }
 
-
-form.addEventListener("submit", e => {
-    e.preventDefault();
+function runCalculation(e) {
+  e.preventDefault();
     inputValidate();
     clearCalculation();
-    console.log(inpDay.getAttribute("invalid"));
-    console.log(inpMonth.getAttribute("invalid"));
-    console.log(inpYear.getAttribute("invalid"));
 
     if (inpDay.getAttribute("invalid") !== "true" && inpMonth.getAttribute("invalid") !== "true" && inpYear.getAttribute("invalid") !== "true") {
         console.log("calculating");
         Calculate();
     }
+}
+
+form/addEventListener("keydown", e =>{
+  if (e.code === "Enter") {
+    runCalculation(e);
+  }
+});
+
+form.addEventListener("submit", e => {
+   runCalculation(e);
 })
 //submitCalc.addEventListener("click", Calculate);

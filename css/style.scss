@@ -11,128 +11,177 @@ $input-font-size: 2rem;
 @import "css-reset";
 
 body {
-    background-color: $light-grey;
-    font-family: $fonts;
+  background-color: $light-grey;
+  font-family: $fonts;
 }
 
 .submit-cont {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem 0;
-    hr {
-        width: 100%;
-        height: 1px;
-    }
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
 
-    button {
-        border-radius: 50%;
-        background-color: $prim-purple;
-        border: none;
-        padding: 1rem;
-        width: 4rem;
-        aspect-ratio: 1 / 1;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        right: calc(50% - 2rem);
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-    }
+  hr {
+    width: 100%;
+    height: 1px;
+  }
+
+  button {
+    border-radius: 50%;
+    background-color: $prim-purple;
+    border: none;
+    padding: 1rem;
+    width: 4rem;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: calc(50% - 2rem);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  button:focus {
+    border: 3px solid $off-white    ;
+    outline: none;
+    box-shadow: 0 0 15px 10px $prim-purple;
+  }
+}
+
+.error {
+  margin-top: 0.3rem;
+  color: $prim-light-red;
+  font-size: clamp(0.6rem, 0.4rem + 1vw, 0.8rem);
+  font-weight: 400;
+  font-style: italic;
+  min-height: 1.5rem;
 }
 
 section.calc {
-    display: grid;
-    grid-auto-rows: auto;
-    place-content: center;
-    margin-top: 10vw;
-
-    main {
-        background-color: $white;
-        width: fit-content;
-        max-width: 95vw;
-        padding: 3rem clamp(1.5rem, 0.5rem + 5vw, 3rem);
-        border-radius: 1.5rem;
-        border-bottom-right-radius: clamp(5rem, -0.6rem + 28vw, 14rem);
-    }
-
-    input {
-        font-size: clamp(1rem, 0.25 * $input-font-size + 3.75vw, $input-font-size);
-        padding: .75rem;
-        border-radius: .75rem;
-        -webkit-border-radius: .75rem;
-        -moz-border-radius: .75rem;
-        -ms-border-radius: .75rem;
-        -o-border-radius: .75rem;
-        border: 1px solid $light-grey;
-        margin-block-start: .5rem;
+  display: grid;
+  grid-auto-rows: auto;
+  place-content: center;
+  margin-top: 10vw;
 }
 
-    form {
-        label {
-            text-transform: uppercase;
-            color: $smokey-grey;
-            letter-spacing: 3px;
-            font-size: .75rem;
-        }
+section.calc main {
+  background-color: $white;
+  width: fit-content;
+  max-width: 95vw;
+  padding: 3rem clamp(1.5rem, 0.5rem + 5vw, 3rem);
+  border-radius: 1.5rem;
+  border-bottom-right-radius: clamp(5rem, -0.6rem + 28vw, 14rem);
+}
 
-        ul {
-            display: flex;
-            padding: 0;
-            max-width: 100%;
-            gap: 1rem;
+section.calc input {
+  font-size: clamp(1rem, 0.25 * $input-font-size + 3.75vw, $input-font-size);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  -webkit-border-radius: 0.75rem;
+  -moz-border-radius: 0.75rem;
+  -ms-border-radius: 0.75rem;
+  -o-border-radius: 0.75rem;
+  border: 1px solid $light-grey;
+  margin-block-start: 0.5rem;
+}
 
-            li {
-                display: flex;
-                flex-direction: column;
-                max-width: 30%;
-            }
-        }
-    }
+section.calc label.invalid {
+  color: $prim-light-red;
+}
 
-    ul.calc {
-        padding: 0;
-        margin: 0;
-        font-weight: 800;
-        font-style: italic;
-        font-size: clamp(1.5 * $input-font-size, 0.75 * $input-font-size + 7.5vw, 3 * $input-font-size);
-        line-height: 1.25em;
-        span.calc {
-            color: $prim-purple;
-        }
+section.calc .invalid {
+  border: 2px solid $prim-light-red;
+}
 
-    }
+section.calc form label {
+  text-transform: uppercase;
+  color: $smokey-grey;
+  letter-spacing: 3px;
+  font-size: 0.75rem;
+  border: transparent!important;
+}
+
+section.calc form ul {
+  display: flex;
+  padding: 0;
+  max-width: 100%;
+  gap: 1rem;
+}
+
+section.calc form ul li {
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+}
+
+ul.calc {
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(1.5 * $input-font-size, 0.75 * $input-font-size + 7.5vw, 3 * $input-font-size);
+  line-height: 1.25em;
+}
+
+ul.calc span.calc {
+  color: $prim-purple;
 }
 
 @media screen and (min-width: 680px) {
-    section.calc {
+  section.calc main {
+    width: 80vw;
+    max-width: 52rem;
+  }
 
-        main {
-            width: 80vw;
-            max-width: 52rem;
-        }
+  section.calc form ul {
+    gap: 2rem;
+  }
 
-        form {
-            ul {
-                gap: 2rem;
-            }
-        }
-    }
+  .submit-cont {
+    padding: 1rem 0;
+  }
 
-    .submit-cont {
-        padding: 1rem 0;
+  .submit-cont button {
+    position: static;
+    width: 6rem;
+  }
 
-        button {
-            position: static;
-            width: 6rem;
+  .submit-cont button img {
+    display: inline;
+  }
+}
 
-            img {
-                display: inline;
-            }
-        }
-    }
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    background-color: $off-black;
+    transform: scale(1.1) rotate(360deg);
+    -webkit-transform: scale(1.1) rotate(360deg);
+    -moz-transform: scale(1.1) rotate(360deg);
+    -ms-transform: scale(1.1) rotate(360deg);
+    -o-transform: scale(1.1) rotate(360deg);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    cursor: pointer;
+  }
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }

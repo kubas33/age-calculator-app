@@ -105,6 +105,20 @@ body {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+.submit-cont button:focus {
+  border: 3px solid hsl(0, 0%, 94%);
+  outline: none;
+  box-shadow: 0 0 15px 10px hsl(259, 100%, 65%);
+}
+
+.error {
+  margin-top: 0.3rem;
+  color: hsl(0, 100%, 67%);
+  font-size: clamp(0.6rem, 0.4rem + 1vw, 0.8rem);
+  font-weight: 400;
+  font-style: italic;
+  min-height: 1.5rem;
+}
 
 section.calc {
   display: grid;
@@ -112,6 +126,7 @@ section.calc {
   place-content: center;
   margin-top: 10vw;
 }
+
 section.calc main {
   background-color: hsl(0, 0%, 100%);
   width: -moz-fit-content;
@@ -121,6 +136,7 @@ section.calc main {
   border-radius: 1.5rem;
   border-bottom-right-radius: clamp(5rem, -0.6rem + 28vw, 14rem);
 }
+
 section.calc input {
   font-size: clamp(1rem, 0.5rem + 3.75vw, 2rem);
   padding: 0.75rem;
@@ -133,24 +149,37 @@ section.calc input {
   -webkit-margin-before: 0.5rem;
           margin-block-start: 0.5rem;
 }
+
+section.calc label.invalid {
+  color: hsl(0, 100%, 67%);
+}
+
+section.calc .invalid {
+  border: 2px solid hsl(0, 100%, 67%);
+}
+
 section.calc form label {
   text-transform: uppercase;
   color: hsl(0, 1%, 44%);
   letter-spacing: 3px;
   font-size: 0.75rem;
+  border: transparent !important;
 }
+
 section.calc form ul {
   display: flex;
   padding: 0;
   max-width: 100%;
   gap: 1rem;
 }
+
 section.calc form ul li {
   display: flex;
   flex-direction: column;
   max-width: 30%;
 }
-section.calc ul.calc {
+
+ul.calc {
   padding: 0;
   margin: 0;
   font-weight: 800;
@@ -158,7 +187,8 @@ section.calc ul.calc {
   font-size: clamp(3rem, 1.5rem + 7.5vw, 6rem);
   line-height: 1.25em;
 }
-section.calc ul.calc span.calc {
+
+ul.calc span.calc {
   color: hsl(259, 100%, 65%);
 }
 
@@ -180,4 +210,33 @@ section.calc ul.calc span.calc {
   .submit-cont button img {
     display: inline;
   }
+}
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    background-color: hsl(0, 0%, 8%);
+    transform: scale(1.1) rotate(360deg);
+    -webkit-transform: scale(1.1) rotate(360deg);
+    -moz-transform: scale(1.1) rotate(360deg);
+    -ms-transform: scale(1.1) rotate(360deg);
+    -o-transform: scale(1.1) rotate(360deg);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    cursor: pointer;
+  }
+}
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }/*# sourceMappingURL=style.css.map */
