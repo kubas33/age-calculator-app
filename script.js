@@ -152,6 +152,9 @@ function inputValidate() {
 
 function Calculate() {
 
+    const ariaCalcYearsElement = document.getElementById("aria-calc-years");
+    const ariaCalcMonthsElement = document.getElementById("aria-calc-months");
+    const ariaCalcDaysElement = document.getElementById("aria-calc-days");
 
   let calcYears = today.getFullYear() - date.getFullYear();
   let calcMonths = today.getMonth() - date.getMonth();
@@ -176,10 +179,11 @@ function Calculate() {
   let currentMonths = 0;
   let currentDays = 0;
 
-  function showAnimatedAge() {
+function showAnimatedAge() {
     const calcYearsElement = document.getElementById("calc-years");
     const calcMonthsElement = document.getElementById("calc-months");
     const calcDaysElement = document.getElementById("calc-days");
+
 
     if (currentYears < calcYears) {
       currentYears++;
@@ -195,12 +199,11 @@ function Calculate() {
       setTimeout(showAnimatedAge, 100);
     }
   }
+  ariaCalcYearsElement.textContent = (calcYears);
+  ariaCalcMonthsElement.textContent = (calcMonths);
+  ariaCalcDaysElement.textContent = (calcDays);
 
   showAnimatedAge();
-
-  console.log(
-    calcYears + " lat " + calcMonths + " miesięcy " + calcDays + " dni"
-  );
 }
 
 function runCalculation(e) {
@@ -214,7 +217,7 @@ function runCalculation(e) {
     }
 }
 
-form/addEventListener("keydown", e =>{
+form.addEventListener("keydown", e =>{
   if (e.code === "Enter") {
     runCalculation(e);
   }

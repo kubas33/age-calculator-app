@@ -123,6 +123,7 @@ ul.calc {
   margin: 0;
   font-weight: 800;
   font-style: italic;
+  color: $off-black;
   font-size: clamp(1.5 * $input-font-size, 0.75 * $input-font-size + 7.5vw, 3 * $input-font-size);
   line-height: 1.25em;
 }
